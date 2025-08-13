@@ -34,7 +34,7 @@ export default function NoteServerPage({
     <div className="grid grid-col-4 gap-4">
       {notes?.data.map((note: Data) => (
         <link
-          href={`/notes/server/${note.id}`}
+          href={`/notes/ssg${note.id}`}
           key={note.id}
           className="bg-gray-100 p-4 rounder"
         >
