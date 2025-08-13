@@ -25,7 +25,7 @@ export const getServerSideProps = (async (context) => {
   const notes = await fetch(
     `https://service.pace11.my.id/api/notes/${params?.id || ''}`,
   ).then((res) => res.json())
-  return { props: { notes }, revalidate: 15 }
+  return { props: { notes } }
 }) satisfies GetServerSideProps<{ notes: Notes }>
 
 export default function NoteServerPage({
