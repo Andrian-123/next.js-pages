@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { z } from 'zod'
+
 const formSchema = z.object({
   title: z.string().min(1, 'required'),
   description: z.string().min(1, 'required'),
@@ -19,7 +20,7 @@ export default async function handler(
       .json({ message: 'Form Submitted', data: validateData })
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const errors = Object.keys(error.formErrors.fieldErrors)?.reduce(
+      const errors = Object.keys(error.flatten().fieldErrors)?.reduce(
         (acc, key) => {
           acc[key] = error.formErrors.fieldErrors[key]?.[0] || 'Error'
           return acc

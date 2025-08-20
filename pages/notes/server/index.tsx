@@ -31,12 +31,12 @@ export default function NoteServerPage({
   notes,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <div className="grid grid-col-4 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       {notes?.data.map((note: Data) => (
         <link
           href={`/notes/server/${note.id}`}
           key={note.id}
-          className="bg-gray-100 p-4 rounder"
+          className="bg-gray-100 p-4 rounded"
         >
           <h2 className="text-xl font-bold">{note.title}</h2>
           <p className="text-gray-600">{note.description}</p>
